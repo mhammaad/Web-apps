@@ -4,3 +4,4 @@ json5==0.8.5
 streamlit==0.75.0
 numpy==1.16.5
 matplotlib==3.1.1
+xlrd >= 1.0.0
