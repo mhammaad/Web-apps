@@ -1,6 +1,7 @@
 pandas
 requests
-json
+json5
+jsonschema
 streamlit
 numpy
 matplotlib
