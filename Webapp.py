@@ -584,7 +584,7 @@ if cat != "Abbildung_10":
 
 
 if cat == "Abbildung 1 & 2":
-    years = st.sidebar.slider("Years to select", data.index.min(), data.index.max(), (data.index.min(), data.index.max()), 1)
+    years = st.sidebar.slider("Years to select", int(data.index.min()), int(data.index.max()), (int(data.index.min()), int(data.index.max())), 1)
     base = st.sidebar.selectbox(
             "Select the base year",
             list(range(years[0],years[1]+1)))
@@ -598,7 +598,7 @@ if cat == "Abbildung 1 & 2":
         st.write(data_subset)
         
 if cat == "Abbildung 4":
-    years = st.sidebar.slider("Years to select", data.index.min(), data.index.max(), (data.index.min(), data.index.max()), 1)
+    years = st.sidebar.slider("Years to select", int(data.index.min()), int(data.index.max()), (int(data.index.min()), int(data.index.max())), 1)
     data_subset = data[(data.index >= years[0])]
     data_subset = data_subset[(data_subset.index <= years[1])]
     fig = Abbildung_4(data_subset)
@@ -628,7 +628,7 @@ if cat == "Abbildung 8":
         st.write(data)
         
 if cat == "Abbildung 9":
-    years = st.sidebar.slider("Years to select", data.index.min(), data.index.max(), (data.index.min(), data.index.max()), 1)
+    years = st.sidebar.slider("Years to select", int(data.index.min()), int(data.index.max()), (int(data.index.min()), int(data.index.max())), 1)
     fig, data = Abbildung_9(data, years)
     st.pyplot(fig)
     if st.checkbox("Show Raw Data", False):
@@ -639,7 +639,7 @@ if cat == "Abbildung 10":
     data1 = load_data([regids[0]], varids)
     data2 = load_data(regids[1:], [varids[1]])
     data = pd.concat([data1, data2], axis = 1)
-    years = st.sidebar.slider("Years to select", data.index.min(), data.index.max(), (data.index.min(), data.index.max()), 1)
+    years = st.sidebar.slider("Years to select", int(data.index.min()), int(data.index.max()), (int(data.index.min()), int(data.index.max())), 1)
     data_subset = data[(data.index >= years[0])]
     data_subset = data_subset[(data_subset.index <= years[1])]
     fig, data = Abbildung_10(data_subset)
@@ -649,7 +649,7 @@ if cat == "Abbildung 10":
         st.write(data_subset)
         
 if cat == "Abbildung 12":
-    years = st.sidebar.slider("Years to select", data.index.min(), data.index.max(), (data.index.min(), data.index.max()), 1)
+    years = st.sidebar.slider("Years to select", int(data.index.min()), int(data.index.max()), (int(data.index.min()), int(data.index.max())), 1)
     data_subset = data[(data.index >= years[0])]
     data_subset = data_subset[(data_subset.index <= years[1])]
     fig, data = Abbildung_12(data_subset)
@@ -659,7 +659,7 @@ if cat == "Abbildung 12":
         st.write(data)
         
 if cat == "Abbildung 18":
-    years = st.sidebar.slider("Years to select", data.index.min(), data.index.max(), (data.index.min(), data.index.max()), 1)
+    years = st.sidebar.slider("Years to select", int(data.index.min()), int(data.index.max()), (int(data.index.min()), int(data.index.max())), 1)
     data_subset = data[(data.index >= years[0])]
     data_subset = data_subset[(data_subset.index <= years[1])]
     fig, data = Abbildung_18(data_subset)
@@ -676,7 +676,7 @@ if cat == "Abbildung 19&20":
         st.write(data.transpose())     
         
 if cat == "Abbildung 28&29":
-    years = st.sidebar.slider("Years to select", data.index.min(), data.index.max(), (data.index.min(), data.index.max()), 1)
+    years = st.sidebar.slider("Years to select", int(data.index.min()), int(data.index.max()), (int(data.index.min()), int(data.index.max())), 1)
     data_subset = data[(data.index >= years[0])]
     data_subset = data_subset[(data_subset.index <= years[1])]
     fig, data1 = Abbildung_2829(data_subset)
@@ -688,7 +688,7 @@ if cat == "Abbildung 28&29":
         
         
 if cat == "Abbildung 33":
-    years = st.sidebar.slider("Years to select", data.index.min(), data.index.max(), (data.index.min(), data.index.max()), 1)
+    years = st.sidebar.slider("Years to select", int(data.index.min()), int(data.index.max()), (int(data.index.min()), int(data.index.max())), 1)
     data_subset = data[(data.index >= years[0])]
     data_subset = data_subset[(data_subset.index <= years[1])]
     fig, data1 = Abbildung_33(data_subset)
@@ -702,7 +702,7 @@ if cat == "Abbildung 34":
     data1.columns = [i.split(',')[1] for i in data1.columns]
     data1 = data1.transpose().reset_index()
     data1 = data1.groupby(by=['index']).sum().transpose()
-    years = st.sidebar.slider("Years to select", data1.index.min(), data1.index.max(), (data1.index.min(), data1.index.max()), 1)
+    years = st.sidebar.slider("Years to select", int(data1.index.min()), int(data1.index.max()), (int(data1.index.min()), int(data1.index.max())), 1)
     base = st.sidebar.selectbox(
             "Select the base year",
             list(range(years[0],years[1]+1)))
