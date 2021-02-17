@@ -28,8 +28,8 @@ import itertools
 import locale
 import matplotlib.ticker as mtick
 
-locale.setlocale(locale.LC_ALL, 'de_DE')
-#locale.setlocale(locale.LC_NUMERIC, "german")
+#locale.setlocale(locale.LC_ALL, 'de_DE')
+locale.setlocale(locale.LC_NUMERIC, "german")
 #locale.setlocale(locale.LC_ALL, 'de_DE.utf8')
 font = {'family': 'calibri',
         'size' : 16}
