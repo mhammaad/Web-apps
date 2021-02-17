@@ -564,6 +564,7 @@ if cat != "Abbildung_10":
 
 if cat == "Abbildung 1 & 2":
     years = st.sidebar.slider("Years to select", float(data.index.min()), float(data.index.max()), (float(data.index.min()), float(data.index.max())), 1.0)
+    years = [int(years[i]) for i in years]
     base = st.sidebar.selectbox(
             "Select the base year",
             list(range(years[0],years[1]+1)))
