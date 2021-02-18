@@ -19,8 +19,8 @@ import requests
 import json
 import streamlit as st
 import numpy as np
-#import base64
-#from io import BytesIO
+import base64
+from io import BytesIO
 import math
 #import plotly
 #import plotly.express as px
