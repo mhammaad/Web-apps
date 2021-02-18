@@ -238,7 +238,7 @@ def Abbildung_1(data):
     if len(data) >= 12:
         plt.xticks(rotation = 'vertical')
     ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:n}'))
-    yticks = [int(i) for i in list(ax.get_yticks())]
+    yticks = list(ax.get_yticks())
     yticks = map(numb_out2, yticks)
     ax.set_yticklabels(list(yticks))
     ax.legend(bbox_to_anchor = (1, 0.5), labels = data.columns, loc = 6, frameon = False, borderaxespad=0.)
@@ -576,7 +576,7 @@ def Abbildung_34(data):
     if len(data) >= 12:
         plt.xticks(rotation = 'vertical')
     ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:n}'))
-    yticks = [int(i) for i in list(ax.get_yticks())]
+    yticks = list(ax.get_yticks())
     yticks = map(numb_out2, yticks)
     ax.set_yticklabels(list(yticks))
     ax.legend(bbox_to_anchor = (0.5, -0.2), labels = data.columns, loc = 10, frameon = False, borderaxespad=0., ncol=3)
