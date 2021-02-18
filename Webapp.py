@@ -238,9 +238,12 @@ def Abbildung_1(data):
     if len(data) >= 12:
         plt.xticks(rotation = 'vertical')
     ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:n}'))
+    yticks = [int(i) for i in list(ax.get_yticks())]
+    yticks = map(numb_out2, yticks)
+    ax.set_yticklabels(list(yticks))
     ax.legend(bbox_to_anchor = (1, 0.5), labels = data.columns, loc = 6, frameon = False, borderaxespad=0.)
     plt.ylabel('Index: '+str(base) + ' = 100', fontweight='bold')
-    plt.title('Entwicklung der '+ variable[0].split(',')[1], pad = 10)
+    plt.title('Entwicklung der '+ variable[0].split(',')[1], pad = 20)
     ax.grid(axis = 'y')
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -268,7 +271,7 @@ def Abbildung_4(data):
     plt.ylabel("Anzahl", fontweight='bold')
     h, l = ax.get_legend_handles_labels()
     ax.legend([h[0],h[1],h[2]], [l[0], l[1], l[2]], bbox_to_anchor = (1, 0.5), loc = 6, frameon = False, borderaxespad=0.)
-    plt.title('Entwicklung der Ein- und Auspendler in' + region[0].split(',')[1], pad = 10)
+    plt.title('Entwicklung der Ein- und Auspendler in ' + region[0].split(',')[1], pad = 20)
     ax.grid(axis = 'y',zorder=0)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -327,7 +330,7 @@ def Abbildung_8(data, year):
     fig = data.plot.bar(stacked = True, width = 0.5, figsize = (10.17,6.57), color = [(255/255, 102/255, 0/255),(191/255, 191/255, 191/255)])
     fig.yaxis.set_major_formatter(mtick.PercentFormatter())
     fig.set_ylabel("Anteil", fontweight='bold')
-    fig.legend(bbox_to_anchor = (1.1, 0.5), loc = 6, frameon = False, borderaxespad=0.)
+    fig.legend(bbox_to_anchor = (1, 0.5), loc = 6, frameon = False, borderaxespad=0.)
     fig.set_title('Anteil Househalte nach Haushaltsgröße ('+str(year)+')'  ,pad = 20)
     fig.set_xticklabels(data.index,rotation = 0)
     if len(data.index) >= 4:
@@ -573,6 +576,9 @@ def Abbildung_34(data):
     if len(data) >= 12:
         plt.xticks(rotation = 'vertical')
     ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:n}'))
+    yticks = [int(i) for i in list(ax.get_yticks())]
+    yticks = map(numb_out2, yticks)
+    ax.set_yticklabels(list(yticks))
     ax.legend(bbox_to_anchor = (0.5, -0.2), labels = data.columns, loc = 10, frameon = False, borderaxespad=0., ncol=3)
     plt.ylabel('Index: '+str(base) + ' = 100', fontweight='bold')
     plt.title('Entwicklung der der Empfänger von sozialen Sicherungsleistungen \nin {} und der Region ({}-{})'.format(
