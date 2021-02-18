@@ -188,7 +188,7 @@ if cat == "Abbildung 34":
 varids = [int(variable[i].split(',')[0]) for i in list(range(len(variable)))]
 #regids = [key for key, value in all_regions_dict.items() if value in region]
 regids = [int(region[i].split(',')[0]) for i in list(range(len(region)))]
-reg_labels = {0: '', 10: '', 1000: ', (LK)', 1000000 : ', (Gem.)'}
+reg_labels = {0: '', 10: '', 1000: ' (LK)', 1000000 : ' (Gem.)'}
 #varid = 2001
 #base = 2011
 
