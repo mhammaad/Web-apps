@@ -8,3 +8,4 @@ xlrd ==1.2.0
 openpyxl==3.0.0
 opencv-python==4.2.0.34
 XlsxWriter==1.2.1
+base58==2.1.0
