@@ -274,7 +274,7 @@ def Abbildung_4(data):
     plt.ylabel("Anzahl", fontweight='bold')
     h, l = ax.get_legend_handles_labels()
     ax.legend([h[0],h[1],h[2]], [l[0], l[1], l[2]], bbox_to_anchor = (1, 0.5), loc = 6, frameon = False, borderaxespad=0.)
-    plt.title('Entwicklung der Ein- und Auspendler in' + region[0].split(',')[1], pad = 10)
+    plt.title('Entwicklung der Ein- und Auspendler in ' + region[0].split(',')[1], pad = 10)
     ax.grid(axis = 'y',zorder=0)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
