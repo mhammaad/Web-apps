@@ -240,7 +240,7 @@ def Abbildung_1(data):
     ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:n}'))
     ax.legend(bbox_to_anchor = (1, 0.5), labels = data.columns, loc = 6, frameon = False, borderaxespad=0.)
     plt.ylabel('Index: '+str(base) + ' = 100', fontweight='bold')
-    plt.title('Entwicklung der '+ variable[0].split(',')[1], fontweight = 'bold')
+    plt.title('Entwicklung der '+ variable[0].split(',')[1], pad = 10)
     ax.grid(axis = 'y')
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -267,8 +267,8 @@ def Abbildung_4(data):
         plt.xticks(rotation = 'vertical')
     plt.ylabel("Anzahl", fontweight='bold')
     h, l = ax.get_legend_handles_labels()
-    ax.legend([h[0],h[1],h[2]], [l[0], l[1], l[2]], bbox_to_anchor = (1.19, 0.5), loc = 10, frameon = False, borderaxespad=0.)
-    plt.title('Entwicklung der Ein- und Auspendler in' + region[0].split(',')[1], fontweight = 'bold')
+    ax.legend([h[0],h[1],h[2]], [l[0], l[1], l[2]], bbox_to_anchor = (1, 0.5), loc = 6, frameon = False, borderaxespad=0.)
+    plt.title('Entwicklung der Ein- und Auspendler in' + region[0].split(',')[1], pad = 10)
     ax.grid(axis = 'y',zorder=0)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -288,25 +288,25 @@ def Abbildung_7(data, year):
     data.columns = map(lambda x:x[1], data.columns)
     #fig = plt.figure(figsize=(10.17,6.57))
     #ax = plt.subplot(111)
-    fig = data.iloc[:,0].to_frame().plot(kind = 'area', figsize = (10.17,6.57), color = (191/255, 191/255, 191/255))
-    fig.plot(data.iloc[:,0].to_frame(), linewidth = 0.2, color = 'b')
     rgbs = [(0, 0, 0), (255, 102, 0), (253,174,107), (191, 191, 191), (127, 127, 127), (140,140,140), (80,80,80)]
-    colors = itertools.cycle([(x/255, y/255, z/255) for x,y,z in rgbs])
-    if len(data.columns) > 1:
-        for col in data.columns[1::]:
-            fig.plot(data[col], linewidth = 3, color = next(colors), label = col)
-    fig.set_xticks(list(data.index))
-    fig.tick_params(axis='x', which='minor', bottom=False)        
+    colors = [(x/255, y/255, z/255) for x,y,z in rgbs]
+    fig = data.plot(kind = 'bar', figsize = (10.17,6.57), color = colors)
+    #fig.plot(data.iloc[:,0].to_frame(), linewidth = 0.2, color = 'b')
+    #rgbs = [(0, 0, 0), (255, 102, 0), (253,174,107), (191, 191, 191), (127, 127, 127), (140,140,140), (80,80,80)]
+    #colors = itertools.cycle([(x/255, y/255, z/255) for x,y,z in rgbs])
+#    if len(data.columns) > 1:
+#        for col in data.columns[1::]:
+#            fig.plot(data[col], linewidth = 3, color = next(colors), label = col)
+    #fig.tick_params(axis='x', which='minor', bottom=False)        
     fig.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:n}'))
     fig.tick_params(axis='y', length = 0)
     fig.yaxis.set_major_formatter(mtick.PercentFormatter())
-    fig.set_xticklabels(list(map(lambda x:x.split(',')[1][:-34], variable)), fontsize = 14)
-    if len(data.index) >= 6:
-        fig.set_xticklabels(list(map(lambda x:x.split(',')[1][:-34], variable)), rotation = 45, ha="right", rotation_mode="anchor", fontsize = 10)
+    fig.set_xticklabels(list(map(lambda x:x.split(',')[1][:-34], variable)), fontsize = 16,rotation = 25, ha="right")
+    
     fig.set_ylabel("Anteil", fontweight='bold')
     fig.set_xlabel('')
-    fig.legend(bbox_to_anchor = (0.5, -0.2), loc = 10, frameon = False, borderaxespad=0., ncol=len(data.columns))
-    fig.set_title('Einwohner nach Alter ('+str(year)+')'  , fontweight = 'bold')
+    fig.legend(bbox_to_anchor = (0.5, -0.3), loc = 9, frameon = False, borderaxespad=0., ncol=len(data.columns))
+    fig.set_title('Einwohner nach Alter ('+str(year)+')'  , fontweight = 'bold', pad = 20)
     fig.grid(axis = 'y',zorder=0)
     fig.spines['top'].set_visible(False)
     fig.spines['right'].set_visible(False)
@@ -327,8 +327,8 @@ def Abbildung_8(data, year):
     fig = data.plot.bar(stacked = True, width = 0.5, figsize = (10.17,6.57), color = [(255/255, 102/255, 0/255),(191/255, 191/255, 191/255)])
     fig.yaxis.set_major_formatter(mtick.PercentFormatter())
     fig.set_ylabel("Anteil", fontweight='bold')
-    fig.legend(bbox_to_anchor = (1.19, 0.5), loc = 10, frameon = False, borderaxespad=0.)
-    fig.set_title('Anteil Househalte nach Haushaltsgröße ('+str(year)+')'  , fontweight = 'bold')
+    fig.legend(bbox_to_anchor = (1.1, 0.5), loc = 6, frameon = False, borderaxespad=0.)
+    fig.set_title('Anteil Househalte nach Haushaltsgröße ('+str(year)+')'  ,pad = 20)
     fig.set_xticklabels(data.index,rotation = 0)
     if len(data.index) >= 4:
         fig.set_xticklabels(data.index, rotation = 45, ha="right", rotation_mode="anchor")
@@ -363,8 +363,8 @@ def Abbildung_9(data, years):
     fig.set_xticklabels(xticks)
     fig.set_xlabel("Anteil", fontweight='bold')
     h, l = fig.get_legend_handles_labels()
-    fig.legend([h[1],h[0]],[l[1],l[0]],bbox_to_anchor = (1.1, 0.5), loc = 10, frameon = False, borderaxespad=0.)
-    fig.set_title('Ausländeranteil in '+region[0].split(',')[1]+' und in der Region ('+str(years[0])+' und '+str(years[1])+')'  , fontweight = 'bold')
+    fig.legend([h[1],h[0]],[l[1],l[0]],bbox_to_anchor = (1, 0.5), loc = 6, frameon = False, borderaxespad=0.)
+    fig.set_title('Ausländeranteil in '+region[0].split(',')[1]+' und in der Region ('+str(years[0])+' und '+str(years[1])+')', pad = 20)
     fig.grid(axis = 'x',zorder=0)
     fig.spines['top'].set_visible(False)
     fig.spines['right'].set_visible(False)
@@ -403,9 +403,14 @@ def Abbildung_10(data):
     #ax2.locator_params(axis = 'y', nbins=6)
     ax2.set_ylim(2,10)    
     ax2.set_xlim(-1, len(data1.year))
+    
     ax1.set_xticklabels(list(data1.year))
     ax2.tick_params(axis='y', which='both',length=0)
     ax1.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:.7n}'))
+    yticks = [int(i) for i in list(ax1.get_yticks())]
+    yticks = map(numb_out2, yticks)
+    ax1.set_yticklabels(list(yticks))
+    
     ax1.legend(bbox_to_anchor = (0.5, -0.2), loc = 10, frameon = False, borderaxespad=0., ncol=len(data1.columns)-1)
     ax2.legend(bbox_to_anchor = (0.5, -0.3), loc = 10, frameon = False, borderaxespad=0., ncol=len(data1.columns)-1)
     ax1.set_title('Entwicklung der Arbeitslosigkeit in ' + data1.columns[1].split(',')[1]+ ' und in der Region ('+str(years[0])+'-'+str(years[1])+')' , fontweight = 'bold', pad = 20)
@@ -416,6 +421,10 @@ def Abbildung_10(data):
     #ax2.grid(None)
     #ax2.set_yticks(np.linspace(ax2.get_yticks()[1], ax2.get_yticks()[-1], len(ax1.get_yticks())))
     ax2.yaxis.set_major_formatter(mtick.PercentFormatter())
+    yticks = [int(i) for i in list(ax2.get_yticks())]
+    yticks = map(numb_out2, yticks)
+    yticks = [i+'%' for i in list(yticks)]
+    ax2.set_yticklabels(list(yticks))
     ax1.spines['top'].set_visible(False)
     ax1.spines['right'].set_visible(False)
     ax1.spines['left'].set_visible(False)
@@ -442,7 +451,7 @@ def Abbildung_12(data):
     yticks = map(numb_out2, yticks)
     ax.set_yticklabels(list(yticks))
     ax.legend(bbox_to_anchor = (0.5, -0.2), loc = 10, frameon = False, borderaxespad=0., ncol=len(data.columns))
-    ax.set_title('Komponenten der Einwohnerentwiclung in ' + region[0].split(',')[1] , fontweight = 'bold')
+    ax.set_title('Komponenten der Einwohnerentwicklung in ' + region[0].split(',')[1] , pad = 20)
     ax.set_xlabel('')
     ax.set_ylabel('Anzahl', fontweight = 'bold')
     ax.grid(axis = 'y',zorder=0)
@@ -473,7 +482,7 @@ def Abbildung_18(data):
     yticks = map(numb_out2, yticks)
     ax.set_yticklabels(list(yticks))
     ax.legend(bbox_to_anchor = (0.5, -0.2), loc = 10, frameon = False, borderaxespad=0., ncol=len(data.columns))
-    ax.set_title('Fertiggestellte Neubauwohnungen in ' + region[0].split(',')[1] , fontweight = 'bold')
+    ax.set_title('Fertiggestellte Neubauwohnungen in ' + region[0].split(',')[1], pad = 20)
     ax.set_xlabel('')
     ax.set_ylabel('Anzahl', fontweight = 'bold')
     ax.grid(axis = 'y',zorder=0)
@@ -495,11 +504,11 @@ def Abbildung_1920(data):
     rgbs = [(0, 0, 0), (255, 102, 0), (253,174,107), (191, 191, 191), (127, 127, 127), (140,140,140), (80,80,80)]
     colors = [(x/255, y/255, z/255) for x,y,z in rgbs]
     fig = data1.plot.bar(figsize=(10.17,6.57), rot = 0, color = colors)
-    fig.legend(bbox_to_anchor = (1.2, 0.5), loc = 10, frameon = False, borderaxespad=0.)
+    fig.legend(bbox_to_anchor = (1, 0.5), loc = 6, frameon = False, borderaxespad=0.)
     fig.set_xlabel('')
-    fig.set_ylabel('Fertiggestellte Neubauwohnungen je 1000 Einwohner', fontweight = 'bold')
+    fig.set_ylabel('Fertiggestellte Neubauwohnungen\nje 1000 Einwohner')
     fig.set_title('Fertiggestellte Neubauwohnungen ({}) in {} und der Region \nje 1.000 Einwohner({}-{})'.format(
-            variable[0].split(',')[1], all_regions.loc[regids[-1],'reg_name_de'], data.columns[-10],data.columns[-1]))
+            variable[0].split(',')[1], all_regions.loc[regids[-1],'reg_name_de'], data.columns[-10],data.columns[-1]), pad = 20)
     fig.grid(axis = 'y',zorder=0)
     fig.spines['top'].set_visible(False)
     fig.spines['right'].set_visible(False)
@@ -515,11 +524,11 @@ def Abbildung_2829(data):
     data1.index = [i.split(',')[1] for i in data1.index]
     fig = data1.plot.bar(figsize=(10.17,6.57), rot = 0, color = colors)
     data1 = data1.transpose()
-    fig.legend(bbox_to_anchor = (1.1, 0.5), loc = 10, frameon = False, borderaxespad=0.)
+    fig.legend(bbox_to_anchor = (1, 0.5), loc = 6, frameon = False, borderaxespad=0.)
     fig.set_xlabel('')
     if varids[0] == 12021:
-        fig.set_ylabel('Mietpreis in Euro pro m^2 im Bestand', fontweight = 'bold')
-        fig.set_title('Standardmieten (Median, nettokalt) für Mietwohnungen (gebraucht) in {} und der Region'.format(all_regions.loc[regids[0],'reg_name_de']))
+        fig.set_ylabel('Mietpreis in Euro pro m^2 \nim Bestand', fontweight = 'bold')
+        fig.set_title('Standardmieten (Median, nettokalt) für Mietwohnungen (gebraucht) \nin {} und der Region'.format(all_regions.loc[regids[0],'reg_name_de']))
     if varids[0] == 12521:
         fig.set_ylabel('Preis für ein und Ein- und Zweifamilienhäusern \nim Bestand', fontweight = 'bold')
         fig.set_title('Standard Preise für Ein/Zweifamilienhäuser (gebraucht) \nin {} und der Region'.format(all_regions.loc[regids[0],'reg_name_de']))
@@ -537,9 +546,13 @@ def Abbildung_33(data):
     fig = data1.plot.bar(rot = 0, stacked = True, width = 0.5, figsize = (10.17,6.57), color = [(255/255, 102/255, 0/255),(191/255, 191/255, 191/255), (0, 0, 0)])
     fig.legend(bbox_to_anchor = (0.5, -0.2), loc = 10, frameon = False, borderaxespad=0.)
     fig.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:.7n}'))
+    yticks = [int(i) for i in list(fig.get_yticks())]
+    yticks = map(numb_out2, yticks)
+    fig.set_yticklabels(list(yticks))
     fig.set_xlabel('')
     fig.set_ylabel('Anzahl', fontweight = 'bold')
-    fig.set_title('Eintwicklung der Empfänger von Transferleistungen in {} ({}-{})'.format(all_regions.loc[regids[0],'reg_name_de'], data1.index[0], data1.index[-1]))
+    
+    fig.set_title('Eintwicklung der Empfänger von Transferleistungen in {} ({}-{})'.format(all_regions.loc[regids[0],'reg_name_de'], data1.index[0], data1.index[-1]), pad = 20)
     fig.grid(axis = 'y',zorder=0)
     fig.spines['top'].set_visible(False)
     fig.spines['right'].set_visible(False)
@@ -563,7 +576,7 @@ def Abbildung_34(data):
     ax.legend(bbox_to_anchor = (0.5, -0.2), labels = data.columns, loc = 10, frameon = False, borderaxespad=0., ncol=3)
     plt.ylabel('Index: '+str(base) + ' = 100', fontweight='bold')
     plt.title('Entwicklung der der Empfänger von sozialen Sicherungsleistungen \nin {} und der Region ({}-{})'.format(
-            all_regions.loc[regids[0],'reg_name_de'], data1.index[0], data1.index[-1]), fontweight = 'bold')
+            all_regions.loc[regids[0],'reg_name_de'], data1.index[0], data1.index[-1]), pad = 20)
     ax.grid(axis = 'y')
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
