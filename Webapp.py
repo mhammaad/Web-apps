@@ -662,7 +662,7 @@ if cat == "Abbildung 7":
     fig, data = Abbildung_7(data, year)
     st.pyplot(fig)
     if st.checkbox("Show Data", False):
-        st.markdown(get_table_download_link(data_subset), unsafe_allow_html=True)
+        st.markdown(get_table_download_link(data), unsafe_allow_html=True)
         st.write(data)
         
 if cat == "Abbildung 8":
@@ -672,7 +672,7 @@ if cat == "Abbildung 8":
     fig, data = Abbildung_8(data, year)
     st.pyplot(fig)
     if st.checkbox("Show Data", False):
-        st.markdown(get_table_download_link(data_subset), unsafe_allow_html=True)
+        st.markdown(get_table_download_link(data), unsafe_allow_html=True)
         st.write(data)
         
 if cat == "Abbildung 9":
@@ -680,7 +680,7 @@ if cat == "Abbildung 9":
     fig, data = Abbildung_9(data, years)
     st.pyplot(fig)
     if st.checkbox("Show Data", False):
-        st.markdown(get_table_download_link(data_subset), unsafe_allow_html=True)
+        st.markdown(get_table_download_link(data), unsafe_allow_html=True)
         st.write(data)
         
 if cat == "Abbildung 10":
@@ -694,7 +694,7 @@ if cat == "Abbildung 10":
     fig, data = Abbildung_10(data_subset)
     st.pyplot(fig)
     if st.checkbox("Show Data", False):
-        st.markdown(get_table_download_link(data_subset), unsafe_allow_html=True)
+        st.markdown(get_table_download_link(data), unsafe_allow_html=True)
         st.write(data)
         
 if cat == "Abbildung 12":
@@ -704,7 +704,7 @@ if cat == "Abbildung 12":
     fig, data = Abbildung_12(data_subset)
     st.pyplot(fig)
     if st.checkbox("Show Data", False):
-        st.markdown(get_table_download_link(data_subset), unsafe_allow_html=True)
+        st.markdown(get_table_download_link(data), unsafe_allow_html=True)
         st.write(data)
         
 if cat == "Abbildung 18":
@@ -714,14 +714,14 @@ if cat == "Abbildung 18":
     fig, data = Abbildung_18(data_subset)
     st.pyplot(fig)
     if st.checkbox("Show Data", False):
-        st.markdown(get_table_download_link(data_subset), unsafe_allow_html=True)
+        st.markdown(get_table_download_link(data), unsafe_allow_html=True)
         st.write(data)
         
 if cat == "Abbildung 19&20":
     fig, data = Abbildung_1920(data)
     st.pyplot(fig)
     if st.checkbox("Show Data", False):
-        st.markdown(get_table_download_link(data_subset), unsafe_allow_html=True)
+        st.markdown(get_table_download_link(data), unsafe_allow_html=True)
         st.write(data.transpose())     
         
 if cat == "Abbildung 28&29":
@@ -731,7 +731,7 @@ if cat == "Abbildung 28&29":
     fig, data1 = Abbildung_2829(data_subset)
     st.pyplot(fig)
     if st.checkbox("Show Data", False):
-        st.markdown(get_table_download_link(data_subset), unsafe_allow_html=True)
+        st.markdown(get_table_download_link(data), unsafe_allow_html=True)
         st.write(data1)
         
         
@@ -743,7 +743,7 @@ if cat == "Abbildung 33":
     fig, data1 = Abbildung_33(data_subset)
     st.pyplot(fig.figure)
     if st.checkbox("Show Data", False):
-        st.markdown(get_table_download_link(data_subset), unsafe_allow_html=True)
+        st.markdown(get_table_download_link(data1), unsafe_allow_html=True)
         st.write(data1)
         
 if cat == "Abbildung 34":
