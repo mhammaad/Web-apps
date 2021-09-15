@@ -39,7 +39,7 @@ mpl.rc('font', **font)
 plt.rc('axes', axisbelow=True)
 #%% fetch data
 #st.title("Data Query from empirica regio")
-zugang = ('empirica.hammad.mufti', 'MYynlmbVZPSJ')
+zugang = ('regio.hammad.mufti', 'U2cqRHfPpVgF')
 baseurl = 'https://api.empirica-regio.de/api/'
 
 @st.cache
